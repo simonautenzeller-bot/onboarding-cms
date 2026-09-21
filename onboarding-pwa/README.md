@@ -7,24 +7,15 @@ Reines HTML/CSS/JS – kein Build, keine Abhängigkeiten.
 
 ## Starten
 
-**Einfach:** `index.html` per Doppelklick im Browser öffnen. Die Inhalte stecken dann in `content/bundle.js`.
-Offline-Modus und „Als App installieren“ gibt es in dieser Variante nicht.
-
-**Als PWA (installierbar, offline):** Über `http://localhost` oder `https://` ausliefern:
-
 ```bash
 node serve.mjs 5173
 ```
 
-Dann `http://localhost:5173` öffnen. Ein Service Worker und die Installation funktionieren nur über
-`https://` oder `localhost`. Zum Verteilen für das Team den Ordner auf einen internen HTTPS-Webserver legen.
-Achtung bei GitHub Pages: Die Seite ist öffentlich erreichbar, auch bei privatem Repository (außer bei GitHub Enterprise) –
-die Inhalte stammen aus dem internen Wiki.
+Dann `http://localhost:5173` öffnen. Ein Service Worker und die Installation als App funktionieren nur über
+`https://` oder `localhost`. Zum Verteilen den Ordner auf einen beliebigen HTTPS-Webserver legen
+(SharePoint/OneDrive reichen nicht – dafür wird ein echter Webserver oder GitHub/Azure Static Web Apps o. Ä. benötigt).
 
 ## Inhalte pflegen
-
-Nach jeder Änderung an `content/*.md` einmal `node build-bundle.mjs` ausführen (aktualisiert `content/bundle.js`).
-
 
 | Was | Wo |
 |---|---|

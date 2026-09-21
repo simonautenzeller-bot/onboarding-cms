@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onboarding Kompass</title>
+  <meta name="description" content="Einarbeitung für neue Kolleg:innen in Digital Content & Design: Publikationsprozess, Briefings, CMS Top-Tipps.">
+  <meta name="theme-color" content="#0019a5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0f24" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Theme vor dem ersten Paint setzen, um Flackern zu vermeiden */
+    try { var t = JSON.parse(localStorage.getItem('onb-v1') || '{}').theme; if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#view">Zum Inhalt springen</a>
+
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation">
+      <a class="brand" href="#/">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M16 5l3.4 7.6L27 16l-7.6 3.4L16 27l-3.4-7.6L5 16l7.6-3.4z" fill="#fff"/></svg>
+        </span>
+        <span class="brand__text"><strong>Onboarding Kompass</strong><small>Digital Content &amp; Design</small></span>
+      </a>
+      <nav id="nav" class="nav"></nav>
+      <div class="sidebar__foot">
+        <button class="btn btn--ghost btn--sm" id="btn-install" hidden>Als App installieren</button>
+        <span class="offline-chip" id="offline-chip" hidden>Offline verfügbar</span>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <div class="main-col">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="btn-menu" aria-label="Menü öffnen" aria-controls="sidebar"></button>
+        <button class="search-trigger" id="btn-search" aria-label="Suche öffnen">
+          <span class="search-trigger__icon" aria-hidden="true"></span>
+          <span class="search-trigger__text">Im Onboarding suchen …</span>
+          <kbd>Strg&nbsp;K</kbd>
+        </button>
+        <div class="topbar__spacer"></div>
+        <div class="topbar__progress" id="topbar-progress" aria-live="polite"></div>
+        <button class="icon-btn" id="btn-theme" aria-label="Darstellung wechseln" title="Hell / Dunkel"></button>
+      </header>
+      <main id="view" tabindex="-1"></main>
+      <footer class="footer">
+        Inhalte aus dem internen Wiki (Publikationsprozess &amp; Top-Tipps). Bei Abweichungen gilt das Wiki.
+      </footer>
+    </div>
+  </div>
+
+  <div class="palette" id="palette" hidden role="dialog" aria-modal="true" aria-label="Suche">
+    <div class="palette__panel">
+      <div class="palette__input"><span class="palette__icon" aria-hidden="true"></span>
+        <input id="palette-input" type="search" placeholder="Suchen: z. B. „Canonical“, „Vorlaufzeit“, „Preis-Name“ …" autocomplete="off" spellcheck="false">
+        <kbd>Esc</kbd>
+      </div>
+      <div class="palette__results" id="palette-results" role="listbox"></div>
+      <div class="palette__hint">↑ ↓ wählen · ↵ öffnen · Alt&nbsp;↵ alle Treffer</div>
+    </div>
+  </div>
+
+  <noscript><p style="padding:2rem">Diese App benötigt JavaScript.</p></noscript>
+  <script src="content/modules.js"></script>
+  <script src="content/bundle.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
