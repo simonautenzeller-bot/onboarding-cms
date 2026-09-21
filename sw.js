@@ -2,10 +2,10 @@
    Strategie: Precache beim Install, danach stale-while-revalidate – Änderungen an den
    Markdown-Dateien kommen so beim nächsten Start automatisch an.
    Bei größeren Änderungen VERSION erhöhen. */
-const VERSION = 'onb-v1.1.0';
+const VERSION = 'onb-v1.2.0';
 const SHELL = [
   './', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest',
-  'content/modules.js', 'content/bundle.js', 'content/team.md', 'content/zeiten.md', 'content/briefing.md', 'content/vorlauf.md',
+  'content/modules.js', 'content/bundle.js', 'content/team.md', 'content/zeiten.md', 'content/briefing.md', 'content/jira.md', 'content/vorlauf.md',
   'content/leitfaeden.md', 'content/aem.md', 'content/tipps.md', 'content/namen.md', 'content/qm.md',
   'content/glossar.md', 'content/links.md',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png'

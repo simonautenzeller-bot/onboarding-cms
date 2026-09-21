@@ -106,6 +106,30 @@ svg.ic { width: 1.25em; height: 1.25em; stroke: currentColor; fill: none; stroke
 .brand__text strong { font-size: 15.5px; }
 .brand__text small { color: var(--text-faint); font-size: 12px; }
 
+/* Rollenwahl */
+.role { padding: 4px 8px 14px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+.role__label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 8px; }
+.role__seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 3px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; }
+.role__seg button { height: 32px; border: 0; border-radius: 8px; background: none; color: var(--text-soft); font: 600 13px/1 var(--font); cursor: pointer; }
+.role__seg button:hover { color: var(--text); }
+.role__seg button[aria-checked="true"] { background: var(--brand); color: var(--brand-ink); }
+.role__hint { margin-top: 8px; font-size: 12.5px; line-height: 1.4; color: var(--text-faint); }
+.nav__label--off { opacity: .7; }
+.nav a.off { opacity: .68; }
+.nav .num--icon { border-style: dashed; }
+.nav .num--icon svg { width: 13px; height: 13px; }
+.role-card { display: grid; gap: 6px; align-content: start; text-align: left; padding: 20px 22px; cursor: pointer; color: var(--text); font: inherit; border: 1px solid var(--line); transition: transform .15s, border-color .15s; }
+.role-card:hover { transform: translateY(-2px); border-color: var(--brand); }
+.role-card strong { font-size: 18px; }
+.role-card > span:not(.role-card__ic) { color: var(--text-soft); font-size: 14.5px; }
+.role-card small { color: var(--text-faint); font-size: 12.5px; margin-top: 4px; }
+.role-card__ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--brand-soft); color: var(--brand); margin-bottom: 6px; }
+.grp-title { font-size: 17px; margin: 26px 0 12px; display: flex; align-items: baseline; gap: 10px; }
+.grp-title .ic { align-self: center; color: var(--brand); }
+.grp-title small { font-weight: 400; font-size: 13.5px; color: var(--text-faint); }
+.mod-card--off { opacity: .72; }
+.mod-card--off:hover { opacity: 1; }
+
 .nav { display: grid; gap: 2px; }
 .nav__label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); padding: 16px 10px 6px; }
 .nav a {

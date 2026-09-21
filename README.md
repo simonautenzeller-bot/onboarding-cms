@@ -21,6 +21,20 @@ Dann `http://localhost:5173` öffnen. Ein Service Worker und die Installation fu
 Achtung bei GitHub Pages: Die Seite ist öffentlich erreichbar, auch bei privatem Repository (außer bei GitHub Enterprise) –
 die Inhalte stammen aus dem internen Wiki.
 
+## Aufbau: Gruppen und Rollen
+
+Die Module sind in drei Gruppen geteilt (`groups` in `content/modules.js`):
+
+| Gruppe | Module |
+|---|---|
+| Für alle | Team & Rollen, Zeiten & Notfall, Vorlaufzeiten |
+| Wie briefe ich? (JIRA) | Briefing-Prozesse, JIRA & Tasks, Leitfäden, AEM-Briefing |
+| CMS-Redaktion | CMS Top-Tipps, Namenskonventionen, QM/tQM |
+
+Wer „CMS“ wählt, bekommt „Für alle“ + „CMS-Redaktion“ als Lernpfad; „Briefing“ entsprechend „Für alle“ + „Wie briefe ich?“.
+Fortschritt, Checkliste (`for: 'cms' | 'briefing'` je Punkt) und Abschlusscheck richten sich nach der gewählten Rolle.
+Ein neues Modul bekommt in `modules.js` ein Feld `group`.
+
 ## Inhalte pflegen
 
 Nach jeder Änderung an `content/*.md` einmal `node build-bundle.mjs` ausführen (aktualisiert `content/bundle.js`).

@@ -3,9 +3,23 @@
 window.APP_CONTENT = {
   wiki: 'https://prev.o2online.de/wiki/',
 
+  /* Inhaltliche Gruppen. Die Reihenfolge hier bestimmt die Reihenfolge im Menü. */
+  groups: [
+    { id: 'basis', title: 'Für alle', hint: 'Grundlagen, die jede:r braucht', icon: 'users' },
+    { id: 'briefing', title: 'Wie briefe ich? (JIRA)', hint: 'Aufgaben richtig beauftragen', icon: 'clipboard' },
+    { id: 'cms', title: 'CMS-Redaktion', hint: 'Umsetzung und Regeln im CMS', icon: 'layers' }
+  ],
+
+  /* Rollen wählen aus, welche Gruppen zum eigenen Lernpfad zählen (Fortschritt, Checkliste, Abschlusscheck). */
+  roles: [
+    { id: 'cms', title: 'CMS-Redaktion', text: 'Ich setze Briefings im CMS um und publiziere.', groups: ['basis', 'cms'] },
+    { id: 'briefing', title: 'Briefing & JIRA', text: 'Ich beauftrage Aufgaben – z. B. Marketing, PO/BO, SEO, Legal.', groups: ['basis', 'briefing'] },
+    { id: 'all', title: 'Alles', text: 'Ich will beide Bereiche kennenlernen.', groups: ['basis', 'briefing', 'cms'] }
+  ],
+
   modules: [
     {
-      id: 'team', nr: 1, icon: 'users', minutes: 10, layout: 'tabs',
+      id: 'team', group: 'basis', icon: 'users', minutes: 10, layout: 'tabs',
       title: 'Team & Rollen',
       summary: 'Wer arbeitet hier wofür – und wen sprichst du bei welchem Thema an?',
       goals: ['Die zwei Teams (TEF & arsmedium) unterscheiden', 'Rollen und Zuständigkeiten kennen', 'Can Pham Ngoc als ersten Ansprechpartner kennen'],
@@ -18,7 +32,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'zeiten', nr: 2, icon: 'clock', minutes: 8, layout: 'tabs',
+      id: 'zeiten', group: 'basis', icon: 'clock', minutes: 8, layout: 'tabs',
       title: 'Zeiten & Notfall',
       summary: 'Wann wird publiziert, was ist eine außerordentliche Freigabe und wer hilft im Notfall?',
       goals: ['Publikationszeiten auswendig kennen', 'Außerordentliche Freigabe korrekt erteilen', 'Wissen, wer den CnP macht'],
@@ -31,7 +45,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'briefing', nr: 3, icon: 'clipboard', minutes: 15, layout: 'tabs',
+      id: 'briefing', group: 'briefing', icon: 'clipboard', minutes: 15, layout: 'tabs',
       title: 'Briefing-Prozesse',
       summary: 'So kommt eine Aufgabe zu den richtigen Leuten – je Fachrichtung.',
       goals: ['Den richtigen Kanal für ein Briefing wählen', 'Den Ablauf der CMS Redaktion kennen', 'Hard- und Soft-Bundles unterscheiden'],
@@ -44,7 +58,24 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'vorlauf', nr: 4, icon: 'calendar', minutes: 10, layout: 'flat',
+      id: 'jira', group: 'briefing', icon: 'list', minutes: 12, layout: 'tabs',
+      title: 'JIRA & Tasks',
+      summary: 'Welcher Task gehört wohin, was muss drinstehen – und wie läuft ein Task von Briefing bis CnP?',
+      goals: ['Das richtige Board bzw. den richtigen Ticket-Typ wählen', 'Einen vollständigen, finalen Task schreiben', 'Die „Bitte nicht“-Regeln beim Briefen kennen'],
+      sources: [
+        { label: 'Allgemeine Briefing-Prozesse', url: 'https://prev.o2online.de/wiki/publikationsprozess/allgemeine-briefing-prozesse/' },
+        { label: 'AEM-Prozesse', url: 'https://prev.o2online.de/wiki/publikationsprozess/aem/' }
+      ],
+      quiz: [
+        { q: 'Wie stellst du eine Aufgabe für die Technik von arsmedium?', options: ['Per Teams-Nachricht an Can', 'Als CS-Task mit Präfix „Agentur“, zugewiesen an arsmedium_tech', 'Als A-Briefing-Task', 'Per Anruf an die Zentrale'], answer: 1, why: 'Dringende Themen, bei denen ein CS-Task nicht reicht: E-Mail auf Englisch an den Verteiler.' },
+        { q: 'Was ergänzt du, wenn du das finale Excel-Briefing in einen Teaser- oder Deal-Task einbindest?', options: ['„Bitte prüfen“', '„Briefing ist final“', 'Nichts', 'Die Handynummer'], answer: 1, why: 'Erst dann ist das Briefing zur Umsetzung freigegeben.' },
+        { q: 'Du hast eine einzelne Teaser-Anpassung. Was tust du?', options: ['Einen eigenen Task anlegen', 'Den aktuellen Teaser-KW-Task erstellen oder nutzen', 'Direkt im CMS ändern', 'Bis Monatsende sammeln'], answer: 1, why: 'Keine Einzel-Anpassungen als eigenen Task briefen.' },
+        { q: 'Wer ist für den Prozess einer Landingpage bzw. eines Teasers verantwortlich?', options: ['Immer Can', 'Wer den JIRA-Task erstellt', 'Die CMS Redaktion', 'Legal'], answer: 1, why: 'Grundregel aus den Leitfäden.' },
+        { q: 'Wann gibst du als Redakteur:in einen Task zurück?', options: ['Sobald die Umsetzung fertig ist', 'Erst nach Abschlussrecherche und Aufräumen im CMS', 'Nach dem ersten Feedback', 'Nach dem Launch, ohne Prüfung'], answer: 1, why: 'Gilt z. B. auch für „After Launch & Offlinenahme“-Tasks.' }
+      ]
+    },
+    {
+      id: 'vorlauf', group: 'basis', icon: 'calendar', minutes: 10, layout: 'flat',
       title: 'Vorlaufzeiten',
       summary: 'A, B, C1, C2: Wie früh muss gebrieft werden – und wann muss die Prev stehen?',
       goals: ['Die vier Briefing-Typen unterscheiden', 'Sonderregeln für Teaser, Landingpages und Deals kennen', 'Fristen mit dem Rechner bestimmen'],
@@ -57,7 +88,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'leitfaeden', nr: 5, icon: 'flag', minutes: 25, layout: 'tabs',
+      id: 'leitfaeden', group: 'briefing', icon: 'flag', minutes: 25, layout: 'tabs',
       title: 'Leitfäden: Kampagne, LP, Teaser, Deals',
       summary: 'Schritt für Schritt von Kickoff bis Retro – mit allen „Bitte nicht“-Regeln.',
       goals: ['Die Projektstruktur in JIRA aufbauen', 'CMS-Briefings vollständig und final abgeben', 'Retro und Performance-Review einplanen'],
@@ -76,7 +107,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'aem', nr: 6, icon: 'layers', minutes: 8, layout: 'flat',
+      id: 'aem', group: 'briefing', icon: 'layers', minutes: 8, layout: 'flat',
       title: 'AEM-Briefing',
       summary: 'Was in ein Ticket gehört, damit die Umsetzung ohne Nachfragen klappt.',
       goals: ['Ein vollständiges AEM-Ticket schreiben', 'Die Grundregeln (Sprache, Umfang, Feedback) kennen'],
@@ -89,7 +120,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'tipps', nr: 7, icon: 'lightbulb', minutes: 45, layout: 'accordion', search: true,
+      id: 'tipps', group: 'cms', icon: 'lightbulb', minutes: 45, layout: 'accordion', search: true,
       title: 'CMS Top-Tipps',
       summary: 'Die Praxisregeln der CMS-Redaktion – 27 Themen zum Nachschlagen (Stand laut Wiki: September 2026).',
       goals: ['Die Grundregeln für Site, SEO, Links, Teaser, Preise und Code kennen', 'Wissen, wo du bei Sonderfällen nachschlägst'],
@@ -104,7 +135,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'namen', nr: 8, icon: 'tag', minutes: 10, layout: 'tabs',
+      id: 'namen', group: 'cms', icon: 'tag', minutes: 10, layout: 'tabs',
       title: 'Namenskonventionen',
       summary: 'Erlaubte Zeichen, Umwandlung, Styles – inklusive Namenskonverter zum Ausprobieren.',
       goals: ['Dokument- und Ordnernamen regelkonform vergeben', 'Die Konvertierungstabelle anwenden', '„O2“ richtig schreiben'],
@@ -117,7 +148,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'qm', nr: 9, icon: 'shield', minutes: 8, layout: 'tabs',
+      id: 'qm', group: 'cms', icon: 'shield', minutes: 8, layout: 'tabs',
       title: 'Qualität: QM, tQM & CnP',
       summary: 'Wer prüft was – und was passiert nach dem Launch?',
       goals: ['QM und tQM unterscheiden', 'Wissen, was du als Neuling prüfen lässt', 'Nach der Publikation richtig nachprüfen'],
@@ -137,19 +168,25 @@ window.APP_CONTENT = {
       { id: 'c2', text: 'Team & Rollen durchgehen; Can Pham Ngoc als ersten Ansprechpartner kennenlernen', to: '/m/team' },
       { id: 'c3', text: 'Zugänge prüfen: JIRA, Teams, SharePoint „Design Chapter“, CMS, Compendium', to: '/links' },
       { id: 'c4', text: 'Publikationszeiten und außerordentliche Freigabe verinnerlichen', to: '/m/zeiten' },
-      { id: 'c5', text: 'Abwesenheits-Task POMA-22015 ansehen (vor jedem Urlaub nutzen)', to: '/m/leitfaeden/c-kampagne' }
+      { id: 'c5', text: 'Abwesenheits-Task POMA-22015 ansehen (vor jedem Urlaub nutzen)', to: '/m/jira' }
     ]},
-    { group: 'Woche 2 – Briefings verstehen', items: [
+    /* for: 'cms' | 'briefing' – ohne Angabe gilt der Punkt für alle Rollen */
+    { group: 'Woche 2 – Briefings & JIRA verstehen', items: [
       { id: 'c6', text: 'Briefing-Typen A / B / C1 / C2 und Prev-Fristen sicher können', to: '/m/vorlauf' },
+      { id: 'c15', text: 'Modul „JIRA & Tasks“ durcharbeiten', to: '/m/jira' },
       { id: 'c7', text: 'Beispiel-Epics 2026 in JIRA ansehen (A-Briefing, Teaser, EOL)', to: '/links' },
-      { id: 'c8', text: 'Teaser-Briefing-Vorlagen im SharePoint öffnen', to: '/links' },
-      { id: 'c9', text: 'Leitfäden C-Kampagne, Landingpage, Teaser und Deals durcharbeiten', to: '/m/leitfaeden' },
-      { id: 'c10', text: 'AEM-Ticket-Vorlagen ansehen (DECM-3423, DECM-924, TMTA-2961)', to: '/m/aem' }
+      { id: 'c8', text: 'Teaser-Briefing-Vorlagen im SharePoint öffnen', to: '/links', for: 'briefing' },
+      { id: 'c9', text: 'Leitfäden C-Kampagne, Landingpage, Teaser und Deals durcharbeiten', to: '/m/leitfaeden', for: 'briefing' },
+      { id: 'c10', text: 'AEM-Ticket-Vorlagen ansehen (DECM-3423, DECM-924, TMTA-2961)', to: '/m/aem', for: 'briefing' },
+      { id: 'c17', text: 'Ablauf der CMS Redaktion nachvollziehen: Briefing → Prev → QM → Publikation → CnP', to: '/m/briefing/cms-redaktion', for: 'cms' }
     ]},
-    { group: 'Woche 3–4 – Handwerk', items: [
-      { id: 'c11', text: 'CMS Top-Tipps einmal komplett lesen', to: '/m/tipps' },
-      { id: 'c12', text: 'Namenskonventionen lernen und Konverter ausprobieren', to: '/m/namen' },
-      { id: 'c13', text: 'Ersten Task gemeinsam mit einer erfahrenen Kolleg:in im QM/tQM begleiten', to: '/m/qm' },
+    { group: 'Woche 3–4 – Praxis', items: [
+      { id: 'c11', text: 'CMS Top-Tipps einmal komplett lesen', to: '/m/tipps', for: 'cms' },
+      { id: 'c12', text: 'Namenskonventionen lernen und Konverter ausprobieren', to: '/m/namen', for: 'cms' },
+      { id: 'c13', text: 'Ersten Task gemeinsam mit einer erfahrenen Kolleg:in im QM/tQM begleiten', to: '/m/qm', for: 'cms' },
+      { id: 'c16', text: 'Ersten eigenen Task nach Vorlage anlegen und von Can gegenlesen lassen', to: '/m/jira', for: 'briefing' }
+    ]},
+    { group: 'Abschluss', items: [
       { id: 'c14', text: 'Abschlusscheck bestehen', to: '/abschluss' }
     ]}
   ]
