@@ -1,8 +1,9 @@
 /* Service Worker: App-Shell + Inhalte offline verfügbar.
    Strategie: Precache beim Install, danach stale-while-revalidate – Änderungen an den
    Markdown-Dateien kommen so beim nächsten Start automatisch an.
-   Bei größeren Änderungen VERSION erhöhen. */
-const VERSION = 'onb-v1.2.0';
+   VERSION wird automatisch von build-bundle.mjs gesetzt (Versions-/Build-Nummer + Content-Hash) –
+   nicht von Hand bearbeiten, stattdessen `node build-bundle.mjs` ausführen. */
+const VERSION = 'onb-v1.0.3-4be9657';
 const SHELL = [
   './', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest',
   'content/modules.js', 'content/bundle.js', 'content/team.md', 'content/zeiten.md', 'content/briefing.md', 'content/jira.md', 'content/vorlauf.md',
