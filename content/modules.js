@@ -10,6 +10,9 @@ window.APP_CONTENT = {
     { id: 'cms', title: 'CMS-Redaktion', hint: 'Umsetzung und Regeln im CMS', icon: 'layers' }
   ],
 
+  /* Jedes Modul hat außerdem `kind`: 'reference' = Nachschlagewerk (kein Training, zählt nicht zu Fortschritt/
+     Abschlusscheck, erscheint im eigenen Menübereich). Ohne Angabe gilt ein Modul als Training. */
+
   /* Rollen wählen aus, welche Gruppen zum eigenen Lernpfad zählen (Fortschritt, Checkliste, Abschlusscheck). */
   roles: [
     { id: 'cms', title: 'CMS-Redaktion', text: 'Ich setze Briefings im CMS um und publiziere.', groups: ['basis', 'cms'] },
@@ -120,7 +123,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'tipps', group: 'cms', icon: 'lightbulb', minutes: 45, layout: 'accordion', search: true,
+      id: 'tipps', group: 'cms', kind: 'reference', icon: 'lightbulb', minutes: 45, layout: 'accordion', search: true,
       title: 'CMS Top-Tipps',
       summary: 'Die Praxisregeln der CMS-Redaktion – 27 Themen zum Nachschlagen (Stand laut Wiki: September 2026).',
       goals: ['Die Grundregeln für Site, SEO, Links, Teaser, Preise und Code kennen', 'Wissen, wo du bei Sonderfällen nachschlägst'],
@@ -135,7 +138,7 @@ window.APP_CONTENT = {
       ]
     },
     {
-      id: 'namen', group: 'cms', icon: 'tag', minutes: 10, layout: 'tabs',
+      id: 'namen', group: 'cms', kind: 'reference', icon: 'tag', minutes: 10, layout: 'tabs',
       title: 'Namenskonventionen',
       summary: 'Erlaubte Zeichen, Umwandlung, Styles – inklusive Namenskonverter zum Ausprobieren.',
       goals: ['Dokument- und Ordnernamen regelkonform vergeben', 'Die Konvertierungstabelle anwenden', '„O2“ richtig schreiben'],
